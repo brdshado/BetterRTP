@@ -17,8 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 public class WorldPlayer implements RTPWorld, RTPWorld_Defaulted {
-    private boolean useWorldborder;
-    private boolean RTPOnDeath;
+    private boolean useWorldborder, RTPOnDeath;
     private int CenterX, CenterZ, maxRad, minRad, price, min_y, max_y;
     private long cooldown;
     private List<String> Biomes;

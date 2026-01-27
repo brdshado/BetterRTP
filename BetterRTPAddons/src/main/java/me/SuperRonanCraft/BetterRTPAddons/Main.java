@@ -1,5 +1,6 @@
 package me.SuperRonanCraft.BetterRTPAddons;
 
+import lombok.Getter;
 import me.SuperRonanCraft.BetterRTPAddons.util.Files;
 import me.SuperRonanCraft.BetterRTPAddons.util.ReloadListener;
 import org.bukkit.Bukkit;
@@ -7,8 +8,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
 
+    @Getter
     private static Main instance;
+    @Getter
     private final AddonsHandler addonsHandler = new AddonsHandler();
+    @Getter
     private final Files files = new Files();
     public final AddonMessages msgs = new AddonMessages();
     private final ReloadListener reloadListener = new ReloadListener();
@@ -30,15 +34,4 @@ public class Main extends JavaPlugin {
         addonsHandler.load();
     }
 
-    public Files getFiles() {
-        return files;
-    }
-
-    public AddonsHandler getAddonsHandler() {
-        return addonsHandler;
-    }
-
-    public static Main getInstance() {
-        return instance;
-    }
 }
