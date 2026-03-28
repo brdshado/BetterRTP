@@ -63,20 +63,18 @@ public class RTPPlayer {
                 }
                 attempts++; //Add an attempt
                 //Load chunk and find out if safe location (asynchronously)
-                AsyncHandler.sync(() -> {
-                    try { //Prior to 1.12 this async chunk will NOT work
-                        CompletableFuture<Chunk> chunk = PaperLib.getChunkAtAsync(loc);
-                        chunk.thenAccept(result -> {
-                            //BetterRTP.debug("Checking location for " + p.getName());
-                            attempt(sendi, loc);
-                        });
-                    } catch (IllegalStateException e) {
-                        //Legacy non-async support
-                        attempt(sendi, loc);
-                    } catch (Throwable ignored) {
+                try { //Prior to 1.12 this async chunk will NOT work
+                    CompletableFuture<Chunk> chunk = PaperLib.getChunkAtAsync(loc);
+                    chunk.thenAccept(result -> {
+                        //BetterRTP.debug("Checking location for " + p.getName());
+                        AsyncHandler.syncAtLocation(loc, () -> attempt(sendi, loc));
+                    });
+                } catch (IllegalStateException e) {
+                    //Legacy non-async support
+                    AsyncHandler.syncAtLocation(loc, () -> attempt(sendi, loc));
+                } catch (Throwable ignored) {
 
-                    }
-                });
+                }
             });
         }
     }

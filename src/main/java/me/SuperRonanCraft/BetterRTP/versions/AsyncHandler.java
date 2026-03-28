@@ -22,6 +22,10 @@ public class AsyncHandler {
         //Bukkit.getScheduler().runTask(BetterRTP.getInstance(), runnable);
     }
 
+    public static void syncAtLocation(org.bukkit.Location loc, Runnable runnable) {
+        getFolia().runAtLocation(loc, task -> runnable.run());
+    }
+
     public static WrappedTask asyncLater(Runnable runnable, long ticks) {
         return getFolia().runLaterAsync(runnable, ticks);
         //return Bukkit.getScheduler().runTaskLaterAsynchronously(BetterRTP.getInstance(), runnable, ticks);

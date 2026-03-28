@@ -9,4 +9,17 @@ softdepend: [ProtocolLib]
 permissions:
   betterrtp.addon.portals:
     description: Ability to use the portals addon commands
+  betterrtp.addon.queue:
+    description: Ability to join RTP Queue
+    default: true
+  betterrtp.addon.zone:
+    description: Ability to use RTP Zone
+    default: true
 
+commands:
+  rtpqueue:
+    description: Join the RTP Queue
+    usage: /rtpqueue
+  rtpzone:
+    description: Create or manage RTP Zones
+    usage: /rtpzone
