@@ -92,7 +92,7 @@ public class RTPPlayer {
                     getPl().getCooldowns().add(player, worldPlayer.getWorld());
                 tpLoc.setYaw(player.getLocation().getYaw());
                 tpLoc.setPitch(player.getLocation().getPitch());
-                AsyncHandler.sync(() -> settings.teleport.sendPlayer(sendi, player, tpLoc, worldPlayer, attempts, type));
+                AsyncHandler.syncAtLocation(player.getLocation(), () -> settings.teleport.sendPlayer(sendi, player, tpLoc, worldPlayer, attempts, type));
             } else {
                 if (worldPlayer.getPlayerInfo().applyCooldown)
                     getPl().getCooldowns().removeCooldown(player, worldPlayer.getWorld());
