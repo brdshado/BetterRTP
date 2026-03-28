@@ -23,11 +23,10 @@ public class AddonQueue implements Addon {
             if (!queue.isEmpty()) {
                 Player p = queue.remove(0);
                 if (p != null && p.isOnline()) {
-                    // Trigger RTP logic for player
                     Bukkit.dispatchCommand(p, "rtp");
                 }
             }
-        }, 100L, 100L); // 5 second delay between RTPs from queue
+        }, 100L, 100L);
     }
 
     @Override
